@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import PostCard from "../../components/post/PostCard";
-import type { Post } from "../../types/post"
+import type { Post } from "../../types/post";
 
 const posts: Post[] = [
   {
@@ -27,23 +27,10 @@ const posts: Post[] = [
   },
 ];
 
-
 const FeedPage = () => {
   return (
-      <Box
-  sx={{
-    maxWidth: 900,
-    width: "100%",      // 🔥 THIS IS THE FIX
-    mx: "auto",
-    px: { xs: 1, sm: 2 },
-  }}
->
-
-
-      <Typography
-        variant="h5"
-        sx={{ mb: 3, textAlign: "center" }}
-      >
+    <Box sx={{ maxWidth: 900, width: "100%", mx: "auto" }}>
+      <Typography variant="h5" textAlign="center" mb={3}>
         Latest Posts
       </Typography>
 
