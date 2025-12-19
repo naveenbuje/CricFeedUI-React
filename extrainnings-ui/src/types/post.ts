@@ -6,4 +6,8 @@ export interface Post {
   content: string;
   totalScore: number;
 
+  likes: number;
+  comments: number;
+  shares: number;
+
 }

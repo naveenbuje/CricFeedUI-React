@@ -7,6 +7,11 @@ import {
   Button,
   Chip,
 } from "@mui/material";
+
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
+import { useState } from "react";
 import type { Post } from "../../types/post";
 
 interface Props {
@@ -14,6 +19,10 @@ interface Props {
 }
 
 const PostCard = ({ post }: Props) => {
+  // ✅ Hooks MUST be inside component
+  const [selectedScore, setSelectedScore] = useState<number | null>(null);
+  const [score, setScore] = useState<number>(post.totalScore);
+
   return (
     <Card
       sx={{
@@ -40,8 +49,9 @@ const PostCard = ({ post }: Props) => {
             </Box>
           </Box>
 
+          {/* Total Score */}
           <Chip
-            label={`${post.totalScore} pts`}
+            label={`${score} pts`}
             color="warning"
             size="small"
           />
@@ -52,13 +62,43 @@ const PostCard = ({ post }: Props) => {
           {post.content}
         </Typography>
 
+        {/* Icons Row */}
+        <Box
+          sx={{
+            display: "flex",
+            gap: 3,
+            alignItems: "center",
+            color: "text.secondary",
+            mb: 2,
+          }}
+        >
+          <Box display="flex" alignItems="center" gap={0.5}>
+            <FavoriteBorderIcon fontSize="small" />
+            <Typography variant="body2">{post.likes}</Typography>
+          </Box>
+
+          <Box display="flex" alignItems="center" gap={0.5}>
+            <ChatBubbleOutlineIcon fontSize="small" />
+            <Typography variant="body2">{post.comments}</Typography>
+          </Box>
+
+          <Box display="flex" alignItems="center" gap={0.5}>
+            <ShareOutlinedIcon fontSize="small" />
+            <Typography variant="body2">{post.shares}</Typography>
+          </Box>
+        </Box>
+
         {/* Score Buttons */}
         <Box display="flex" gap={1} flexWrap="wrap">
           {[1, 2, 3, 4, 6].map((run) => (
             <Button
               key={run}
               size="small"
-              variant="outlined"
+              variant={selectedScore === run ? "contained" : "outlined"}
+              onClick={() => {
+                setSelectedScore(run);
+                setScore(post.totalScore + run);
+              }}
               sx={{ minWidth: 36 }}
             >
               {run}

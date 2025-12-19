@@ -7,16 +7,28 @@ const TopBar = () => {
         width: "100%",
         display: "flex",
         alignItems: "center",
+        justifyContent: "space-between",
         gap: 2,
       }}
     >
       <TextField
         placeholder="Search..."
         size="small"
-        sx={{ maxWidth: 300, flex: 1 }}
+        sx={{
+          maxWidth: 320,
+          backgroundColor: "#f9fafb",
+          borderRadius: 2,
+        }}
       />
 
-      <Button variant="contained">
+      <Button
+        variant="contained"
+        sx={{
+          textTransform: "none",
+          fontWeight: 600,
+          px: 3,
+        }}
+      >
         Create Post
       </Button>
     </Box>
@@ -24,4 +36,3 @@ const TopBar = () => {
 };
 
 export default TopBar;
-

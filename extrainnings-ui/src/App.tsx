@@ -1,11 +1,14 @@
+import { BrowserRouter } from "react-router-dom";
 import MainLayout from "./components/layout/MainLayout";
-import FeedPage from "./pages/feed/FeedPage";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
-    <MainLayout>
-      <FeedPage />
-    </MainLayout>
+    <BrowserRouter>
+      <MainLayout>
+        <AppRoutes />
+      </MainLayout>
+    </BrowserRouter>
   );
 }
 

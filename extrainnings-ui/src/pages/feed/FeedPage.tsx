@@ -10,6 +10,9 @@ const posts: Post[] = [
     content:
       "Just completed an amazing tournament run! The final match was intense 🔥",
     totalScore: 28,
+    likes: 12,
+    comments: 8,
+    shares: 7,
   },
   {
     id: 2,
@@ -18,8 +21,12 @@ const posts: Post[] = [
     content:
       "Training session highlights from today. Working on new strategies!",
     totalScore: 35,
+    likes: 18,
+    comments: 15,
+    shares: 7,
   },
 ];
+
 
 const FeedPage = () => {
   return (
