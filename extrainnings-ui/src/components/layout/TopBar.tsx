@@ -7,7 +7,6 @@ const TopBar = () => {
         width: "100%",
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
         gap: 2,
       }}
     >
@@ -15,7 +14,7 @@ const TopBar = () => {
         placeholder="Search..."
         size="small"
         sx={{
-          maxWidth: 320,
+          flex: 1,
           backgroundColor: "#f9fafb",
           borderRadius: 2,
         }}
@@ -26,11 +25,14 @@ const TopBar = () => {
         sx={{
           textTransform: "none",
           fontWeight: 600,
-          px: 3,
+          px: { xs: 1.5, sm: 3 },
+          fontSize: { xs: "0.75rem", sm: "0.9rem" },
+          whiteSpace: "nowrap",
         }}
       >
-        Create Post
+        Create
       </Button>
+      
     </Box>
   );
 };

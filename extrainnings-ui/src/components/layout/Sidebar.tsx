@@ -5,7 +5,12 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+
+interface Props {
+  collapsed: boolean;
+  onToggle?: () => void;
+}
 
 const menuItems = [
   { label: "Feed", path: "/feed" },
@@ -13,21 +18,27 @@ const menuItems = [
   { label: "Teams", path: "/teams" },
 ];
 
-const SidebarContent = () => {
-  return (
-    <Box sx={{ p: 3 }}>
-      {/* BRAND */}
-      <Typography variant="h6" sx={{ mb: 4, fontWeight: 800 }}>
-        <span style={{ color: "#4f46e5" }}>Extra</span>
-        <span style={{ color: "#111827" }}>Innings</span>
-      </Typography>
+const SidebarContent = ({ collapsed, onToggle }: Props) => {
+  const location = useLocation();
 
+  return (
+    <Box sx={{ p: 2 }}>
+      {/* BRAND */}
+      <Box mb={3}>
+        <Typography fontWeight={800} fontSize="1.1rem">
+          <span style={{ color: "#4f46e5" }}>Extra</span>
+          <span style={{ color: "#111827" }}>Innings</span>
+        </Typography>
+      </Box>
+
+      {/* MENU */}
       <List>
         {menuItems.map((item) => (
           <ListItemButton
             key={item.path}
             component={NavLink}
             to={item.path}
+            selected={location.pathname === item.path}
             sx={{
               borderRadius: 2,
               mb: 0.5,
