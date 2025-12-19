@@ -5,37 +5,40 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 const menuItems = [
-  "Feed",
-  "Profile",
-  "Teams",
-  "Friends",
-  "Tournaments",
-  "Rewards",
+  { label: "Feed", path: "/feed" },
+  { label: "Profile", path: "/profile" },
+  { label: "Teams", path: "/teams" },
 ];
 
 const SidebarContent = () => {
   return (
     <Box sx={{ p: 3 }}>
-      <Typography
-        variant="h6"
-        sx={{ mb: 3, fontWeight: 700, color: "#4f46e5" }}
-      >
-        ExtraInnings
+      {/* BRAND */}
+      <Typography variant="h6" sx={{ mb: 4, fontWeight: 800 }}>
+        <span style={{ color: "#4f46e5" }}>Extra</span>
+        <span style={{ color: "#111827" }}>Innings</span>
       </Typography>
 
       <List>
-        {menuItems.map((item, index) => (
+        {menuItems.map((item) => (
           <ListItemButton
-            key={item}
-            selected={index === 0} // Feed active
+            key={item.path}
+            component={NavLink}
+            to={item.path}
             sx={{
               borderRadius: 2,
               mb: 0.5,
+              "&.active": {
+                backgroundColor: "#eef2ff",
+                color: "#4f46e5",
+                fontWeight: 600,
+              },
             }}
           >
-            <ListItemText primary={item} />
+            <ListItemText primary={item.label} />
           </ListItemButton>
         ))}
       </List>
@@ -44,4 +47,3 @@ const SidebarContent = () => {
 };
 
 export default SidebarContent;
-
